@@ -1,9 +1,15 @@
 import './App.css';
+import {Counter} from "./components/counter/Counter";
 
 function App() {
-  return <div>
-    Hello World
-  </div>
+  return <>
+    <Counter/>
+    <Counter/>
+    <Counter/>
+    <Counter/>
+    <Counter/>
+    <Counter/>
+    </>
 }
 
 export default App;
