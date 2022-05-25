@@ -1,14 +1,8 @@
 import {useState} from "react";
 
-export function Counter() {
-    let [counter, setCounter] = useState(0)
-
-    function onClick() {
-        setCounter(counter + 1)
-    }
-
+export function Counter({clickCount, onClick}) {
     return <div style={{"border": '1px solid black'}}>
-        counter: {counter}
+        counter: {clickCount}
         <br/>
         <button onClick={onClick}>Click Me!</button>
     </div>
