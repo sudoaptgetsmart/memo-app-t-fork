@@ -22,7 +22,7 @@ function App() {
   }
 
   return <>
-    <Counter clickCount={counter} myClick={onCounterClick}/>
+    <Counter clickCount={counter} onClick={onCounterClick}/>
   </>
 }
 
