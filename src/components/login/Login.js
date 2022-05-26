@@ -7,9 +7,10 @@ export function Login({onSubmit}) {
 
     function onFormSubmit(event) {
         event.preventDefault();
-        onSubmit(
-            {username: username, password: password}
-        )
+        onSubmit({
+            username,
+            password
+        })
     }
 
     function onUsernameChange(event) {
@@ -23,6 +24,6 @@ export function Login({onSubmit}) {
     return <form onSubmit={onFormSubmit}>
         <input onChange={onUsernameChange} value={username} type={'text'} placeholder={"username"}/>
         <input onChange={onPasswordChange} value={password} type={'password'} placeholder={"password"}/>
-        <button> Login </button>
+        <button> Login</button>
     </form>
 }

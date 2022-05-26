@@ -6,7 +6,8 @@ import {Login} from "./components/login/Login";
 function App() {
 
   let [isLoggedIn, setIsLoggedIn] = useState(false)
-  let [counter, setCounter] = useState(10)
+  let [counter, useCounter] = useState(10)
+
   function onCounterClick() {
     setCounter(counter + 1)
   }
