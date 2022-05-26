@@ -2,7 +2,7 @@ import {render, screen} from "@testing-library/react";
 import {Memo} from "./Memo";
 
 test(
-    'should show title, desc, date, finsihed',
+    'should show title, desc, date, finished',
     () => {
         const memoData = {
             title: 'title',
