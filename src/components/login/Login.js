@@ -21,16 +21,10 @@ export function Login({onSubmit}) {
         setPassword(event.target.value)
     }
 
-    // return <form onSubmit={onFormSubmit}>
-    //     <input onChange={onUsernameChange} value={username} type={'text'} placeholder={"username"}/>
-    //     <input onChange={onPasswordChange} value={password} type={'password'} placeholder={"password"}/>
-    //     <button> Login</button>
-    // </form>
+    return <form onSubmit={onFormSubmit}>
+        <input onChange={onUsernameChange} value={username} type={'text'} placeholder={"username"}/>
+        <input onChange={onPasswordChange} value={password} type={'password'} placeholder={"password"}/>
+        <button> Login</button>
+    </form>
 
-
-    return <>
-        {
-            [1, 2, 3]
-        }
-    </>
 }
