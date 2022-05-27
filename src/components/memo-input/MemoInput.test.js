@@ -2,7 +2,7 @@ import {screen, render} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {MemoInput} from "./MemoInput";
 
-test('should show a input with type text with placeholder "Title" and be required', () => {
+test('should show a input with type text with placeholder "Title"', () => {
     render(<MemoInput/>)
 
     const input = screen.getByPlaceholderText('Title');
