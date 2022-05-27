@@ -8,14 +8,15 @@ test('should show MemoInput comp', () => {
 })
 
 test('should pass MemoInput the onMemoAdd prop', () => {
-    const _onMemoAdd = true;
+    const _onMemoAdd = false;
 
     let onSubmitProp;
     const _MemoInputData = ({onSubmit}) => {
-        onSubmitProp = onSubmit;
+        onSubmitProp = onSubmit
         return <div>MOCK</div>
     }
 
     render(<MemoAdd onMemoAdd={_onMemoAdd} _MemoInput={_MemoInputData}/>)
+
     expect(onSubmitProp).toBe(_onMemoAdd);
 })

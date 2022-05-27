@@ -6,7 +6,14 @@ import {Memo} from "../memo/Memo";
 // })
 
 export function MemoList({list, _Memo = Memo}) {
+
+    function sortMemoList(a, b) {
+        if (a.title < b.title) return -1;
+        if (a.title > b.title) return 1;
+        return 0;
+    }
+
     return <>
-        { list.map((memoData, idx) => <_Memo key={idx} memo={memoData}/>) }
+        { list.filter(m => !m.finished).sort(sortMemoList).map((memoData, idx) => <_Memo key={idx} memo={memoData}/>) }
     </>
 }

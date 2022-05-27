@@ -1,16 +1,13 @@
 import './App.css';
-import {Counter} from "./components/counter/Counter";
 import {useState} from "react";
 import {Login} from "./components/login/Login";
+import {MemoAdd} from "./components/memo-add/MemoAdd";
+import {MemoList} from "./components/memo-list/MemoList";
 
 function App() {
-
-  let [isLoggedIn, setIsLoggedIn] = useState(false)
-  let [counter, setCounter] = useState(10)
-
-  function onCounterClick() {
-    setCounter(counter + 1)
-  }
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [memoList, setMemoList] = useState([])
+  console.log(memoList)
 
   function onLogin(creds) {
     if (creds.username === 'admin' && creds.password === 'pass') {
@@ -18,12 +15,20 @@ function App() {
     }
   }
 
+  function onMemoAdd(memo) {
+    setMemoList([
+        ...memoList,
+        memo
+    ])
+  }
+
   if (!isLoggedIn) {
     return <Login onSubmit={onLogin}/>
   }
 
   return <>
-    <Counter clickCount={counter} onClick={onCounterClick}/>
+    <MemoAdd onMemoAdd={onMemoAdd}/>
+    <MemoList list={memoList}/>
   </>
 }
 
