@@ -15,3 +15,20 @@ test(
         expect(memoComps.length).toBe(listData.length)
     }
 )
+
+test('should pass correct Memo prop and onEditMemo prop to each memo comp', () => {
+    const _list = [1]
+    const _onEditSelect = true;
+
+    let memoProp;
+    let onEditSelectProp;
+    const _Memo = ({memo, onEditSelect}) => {
+        memoProp = memo;
+        onEditSelectProp = onEditSelect;
+        return <div>MOCK</div>
+    }
+
+    render(<MemoList list={_list} onEditSelect={_onEditSelect} _Memo={_Memo}/>)
+    expect(memoProp).toBe(_list[0])
+    expect(onEditSelectProp).toBe(_onEditSelect)
+})
