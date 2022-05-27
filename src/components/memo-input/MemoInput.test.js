@@ -26,6 +26,12 @@ test('should show a input with type date with placeholder "Date"', () => {
     expect(input).toHaveAttribute('type', 'date');
 })
 
+test('should show label with text "Finished"', () => {
+    render(<MemoInput/>)
+    const label = screen.getByText("Finished:");
+    expect(label).toBeInTheDocument()
+})
+
 test('should show a input with type checkbox', () => {
     render(<MemoInput/>)
     const input = screen.getByRole('checkbox');

@@ -6,14 +6,14 @@ import {Login} from "./components/login/Login";
 function App() {
 
   let [isLoggedIn, setIsLoggedIn] = useState(false)
-  let [counter, useCounter] = useState(10)
+  let [counter, setCounter] = useState(10)
 
   function onCounterClick() {
     setCounter(counter + 1)
   }
 
   function onLogin(creds) {
-    if (creds.username == 'admin' && creds.password == 'pass') {
+    if (creds.username === 'admin' && creds.password === 'pass') {
       setIsLoggedIn(true)
     }
   }
