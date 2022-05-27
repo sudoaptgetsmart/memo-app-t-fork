@@ -16,3 +16,8 @@ test('should show MemoAdd and MemoList comp when logged in', () => {
     expect(screen.getByText('MEMO LIST')).toBeInTheDocument()
 })
 
+test('should show MemoEdit comp when selected Memo is not null', () => {
+    const _MemoEdit = () => <div>EDIT MEMO</div>
+    render(<App _isLoggedIn={true} _MemoEdit={_MemoEdit} _selectedMemo={true}/>)
+    expect(screen.getByText("EDIT MEMO")).toBeInTheDocument();
+})

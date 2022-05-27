@@ -7,13 +7,18 @@ import {MemoList} from "./components/memo-list/MemoList";
 function App(props) {
     const {
         _isLoggedIn = false,
+        _selectedMemo = null,
         _Login = Login,
         _MemoAdd = MemoAdd,
-        _MemoList = MemoList
+        _MemoList = MemoList,
+        // TODO - ADD DEFAULT COMP
+        _MemoEdit,
+
     } = props;
 
     const [isLoggedIn, setIsLoggedIn] = useState(_isLoggedIn)
     const [memoList, setMemoList] = useState([])
+    const [selectedMemo, setSelectedMemo] = useState(_selectedMemo);
 
     function onLogin(creds) {
         if (creds.username === 'admin' && creds.password === 'pass') {
@@ -29,11 +34,15 @@ function App(props) {
     }
 
     function onEditSelect(memo) {
-        console.log(memo)
+        setSelectedMemo(memo)
     }
 
     if (!isLoggedIn) {
         return <_Login onSubmit={onLogin}/>
+    }
+
+    if (selectedMemo) {
+        return <_MemoEdit/>
     }
 
     return <>
