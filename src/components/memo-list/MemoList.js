@@ -13,9 +13,19 @@ export function MemoList({list, onEditSelect, _Memo = Memo}) {
         return 0;
     }
 
+    const pendingList = list.filter(m => !m.finished)
+    const finishedList = list.filter(m => m.finished)
+
     return <>
-        { list.filter(m => !m.finished)
-            .sort(sortMemoList)
-            .map((memoData, idx) => <_Memo key={idx} memo={memoData} onEditSelect={onEditSelect}/>) }
+        <h1>Pending</h1>
+        {
+            pendingList.sort(sortMemoList)
+            .map((memoData, idx) => <_Memo key={idx} memo={memoData} onEditSelect={onEditSelect}/>)
+        }
+        <h1>Finished</h1>
+        {
+            finishedList.sort(sortMemoList)
+                .map((memoData, idx) => <_Memo key={idx} memo={memoData} onEditSelect={onEditSelect}/>)
+        }
     </>
 }

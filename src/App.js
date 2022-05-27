@@ -28,13 +28,17 @@ function App(props) {
         ])
     }
 
+    function onEditSelect(memo) {
+        console.log(memo)
+    }
+
     if (!isLoggedIn) {
         return <_Login onSubmit={onLogin}/>
     }
 
     return <>
         <_MemoAdd onMemoAdd={onMemoAdd}/>
-        <_MemoList list={memoList}/>
+        <_MemoList list={memoList} onEditSelect={onEditSelect}/>
     </>
 }
 

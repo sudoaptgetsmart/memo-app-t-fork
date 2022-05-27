@@ -15,3 +15,4 @@ test('should show MemoAdd and MemoList comp when logged in', () => {
     expect(screen.getByText('MEMO ADD')).toBeInTheDocument()
     expect(screen.getByText('MEMO LIST')).toBeInTheDocument()
 })
+
