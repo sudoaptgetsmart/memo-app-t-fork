@@ -3,8 +3,10 @@ import {useState} from "react";
 import {Login} from "./components/login/Login";
 import {MemoAdd} from "./components/memo-add/MemoAdd";
 import {MemoList} from "./components/memo-list/MemoList";
+import {MemoEdit} from "./components/memo-edit/MemoEdit";
 
 function App(props) {
+
     const {
         _isLoggedIn = false,
         _selectedMemo = null,
@@ -30,11 +32,6 @@ function App(props) {
             ...memoList,
             memo
         ])
-        console.log(memo)
-    }
-
-    function onEditSelect(memo) {
-        setSelectedMemo(memo)
     }
 
     function onMemoEdit(newMemo) {
@@ -44,23 +41,26 @@ function App(props) {
                 if (memo.id !== newMemo.id) {
                     return memo
                 }
+
+                return newMemo
             })
         )
-
     }
 
-    function onDelete(memo) {
+    function onMemoDelete(memo) {
         setMemoList(
             memoList.filter(cMemo => cMemo.id !== memo.id)
         )
     }
 
-    function onEdit(memo) {
-
+    function onEditSelect(memo) {
+        setSelectedMemo(memo)
     }
 
     if (!isLoggedIn) {
-        return <_Login onSubmit={onLogin}/>
+        return <div className={'d-flex justify-content-center p-5'}>
+            <_Login onSubmit={onLogin}/>
+        </div>
     }
 
     if (selectedMemo) {
@@ -69,7 +69,7 @@ function App(props) {
 
     return <>
         <_MemoAdd onMemoAdd={onMemoAdd}/>
-        <_MemoList list={memoList} onEditSelect={onEditSelect} onDelete={onDelete}/>
+        <_MemoList list={memoList} onEditSelect={onEditSelect} onDelete={onMemoDelete}/>
     </>
 }
 
