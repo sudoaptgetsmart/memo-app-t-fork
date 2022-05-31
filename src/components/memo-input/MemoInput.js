@@ -1,17 +1,26 @@
 import {useState} from "react";
+import {v4 as uuidv4} from 'uuid';
 
-export function MemoInput({onSubmit}) {
+export function MemoInput(props) {
 
-    const [formState, setFormState] = useState({
+    const emptyForm = {
+        id: uuidv4(),
         title: '',
         desc: '',
         date: new Date(),
         finished: false
-    });
+    }
+    const {
+        onSubmit,
+        memo = emptyForm
+    } = props
+
+    const [formState, setFormState] = useState(memo);
 
     function onFormSubmit(event) {
         event.preventDefault()
         onSubmit({...formState})
+        setFormState(emptyForm)
     }
 
     function onTitleChange(event) {
