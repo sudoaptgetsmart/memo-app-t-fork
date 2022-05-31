@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {v4 as uuidv4} from 'uuid';
-import {Button, Card, Form, FormControl, FormGroup, FormLabel, InputGroup} from "react-bootstrap";
+import {Button, Card, Col, Form, FormControl, FormGroup, FormLabel, InputGroup, Row} from "react-bootstrap";
 
 export function MemoInput(props) {
 
@@ -53,29 +53,35 @@ export function MemoInput(props) {
         })
     }
 
-    return <Card>
-    <Form onSubmit={onFormSubmit}>
-        <Form.Group className="m-3 w-25 d-flex justify-center" controlId="exampleForm.ControlInput1">
-            <Card.Header as={"h5"}><strong>Title</strong></Card.Header>
-            <Form.Control onChange={onTitleChange} value={formState.title}
-                          type={'text'}/>
+    return <Form onSubmit={onFormSubmit}>
+        <Form.Group as={Row} className="mb-3 w-50">
+            <Form.Label column sm={2}>
+                <strong>Title</strong>
+            </Form.Label>
+            <Col sm={10}>
+                <Form.Control onChange={onTitleChange} value={formState.title} type={'text'}/>
+            </Col>
         </Form.Group>
-        <Form.Group className={"m-3 w-25"}>
-            <Card.Header as={"h5"}><strong>Description</strong></Card.Header>
-            <Form.Control as={"textarea"} rows={5} onChange={onDescChange}
-                          value={formState.desc}/>
+
+        <Form.Group as={Row} className={"mb-3 w-50"}>
+            <Form.Label column sm={2}>
+                <strong>Description</strong>
+            </Form.Label>
+            <Col sm={10}>
+                <Form.Control as={"textarea"} rows={5} onChange={onDescChange} value={formState.desc}/>
+            </Col>
         </Form.Group>
-        <FormGroup className={"w-25 m-3"}>
-        <Form.Control onChange={onDateChange} value={formState.date?.toISOString().substring(0,10)} type={'date'} placeholder={"Date"}/>
-        </FormGroup>
+        <Form.Group as={Row} className={"w-25 m-3"}>
+            <Form.Control onChange={onDateChange} value={formState.date?.toISOString().substring(0, 10)} type={'date'}
+                          placeholder={"Date"}/>
+        </Form.Group>
         <FormGroup>
             <FormLabel>
                 <strong>Finished:</strong>
-            <Form.Check onChange={onFinishedChange} checked={formState.finished} type={'checkbox'}/>
-        </FormLabel>
+                <Form.Check onChange={onFinishedChange} checked={formState.finished} type={'checkbox'}/>
+            </FormLabel>
         </FormGroup>
 
         <Button variant={"primary"} type={"submit"}>Submit</Button>
     </Form>
-    </Card>
 }
