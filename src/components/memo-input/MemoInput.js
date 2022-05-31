@@ -54,7 +54,7 @@ export function MemoInput(props) {
     }
 
     return <Form onSubmit={onFormSubmit}>
-        <Form.Group as={Row} className="mb-3 w-50">
+        <Form.Group as={Row} className="m-3 w-50">
             <Form.Label column sm={2}>
                 <strong>Title</strong>
             </Form.Label>
@@ -63,7 +63,7 @@ export function MemoInput(props) {
             </Col>
         </Form.Group>
 
-        <Form.Group as={Row} className={"mb-3 w-50"}>
+        <Form.Group as={Row} className={"m-3 w-50"}>
             <Form.Label column sm={2}>
                 <strong>Description</strong>
             </Form.Label>
@@ -71,17 +71,27 @@ export function MemoInput(props) {
                 <Form.Control as={"textarea"} rows={5} onChange={onDescChange} value={formState.desc}/>
             </Col>
         </Form.Group>
-        <Form.Group as={Row} className={"w-25 m-3"}>
-            <Form.Control onChange={onDateChange} value={formState.date?.toISOString().substring(0, 10)} type={'date'}
-                          placeholder={"Date"}/>
+        <Form.Group as={Row} className={"w-50 m-3"}>
+            <Col sm={2}></Col>
+            <Col sm={10}>
+                <Form.Control onChange={onDateChange} value={formState.date?.toISOString().substring(0, 10)}
+                              type={'date'}
+                              placeholder={"Date"}/>
+            </Col>
         </Form.Group>
-        <FormGroup>
-            <FormLabel>
+        <Form.Group as={Row} className={"m-3 w-50"}>
+            <FormLabel column sm={2}>
                 <strong>Finished:</strong>
-                <Form.Check onChange={onFinishedChange} checked={formState.finished} type={'checkbox'}/>
             </FormLabel>
-        </FormGroup>
+            <Col sm={10}>
+                <Form.Check onChange={onFinishedChange} checked={formState.finished} type={'checkbox'}/>
+            </Col>
+        </Form.Group>
 
-        <Button variant={"primary"} type={"submit"}>Submit</Button>
+        <Form.Group as={Row} className={"m-3"}>
+            <Col sm={{span: 10, offset: 3}}>
+                <Button variant={"primary"} type={"submit"}>Submit</Button>
+            </Col>
+        </Form.Group>
     </Form>
 }
