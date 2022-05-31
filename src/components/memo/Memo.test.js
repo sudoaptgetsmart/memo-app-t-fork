@@ -67,11 +67,11 @@ test(
 )
 
 test(
-    'should show a button with the text "Delete"',
+    'should a button with the text "Delete"',
     () => {
         render(<Memo memo={{}}/>)
-        const button = screen.getByText('Delete')
-        expect(button.tagName).toBe('BUTTON')
+        const button = screen.getByText("Delete")
+        expect(button.tagName).toBe("BUTTON")
     }
 )
 
@@ -83,7 +83,7 @@ test(
             test: 'MOCK'
         }
         render(<Memo memo={_memo} onDelete={_onDelete}/>)
-        const button = screen.getByText('Delete')
+        const button = screen.getByText("Delete")
         userEvent.click(button);
 
         expect(_onDelete).toHaveBeenCalledWith(_memo)
