@@ -16,21 +16,25 @@ test(
     }
 )
 
-test('should pass correct Memo prop and onEditMemo prop to each memo comp', () => {
+test('should pass correct Memo prop, onEditMemo, and onMemoDelete to  each memo comp', () => {
     const _list = [1]
     const _onEditSelect = true;
+    const _onMemoDelete = true;
 
     let memoProp;
     let onEditSelectProp;
-    const _Memo = ({memo, onEditSelect}) => {
+    let onMemoDeleteProp
+    const _Memo = ({memo, onEditSelect, onDelete}) => {
         memoProp = memo;
         onEditSelectProp = onEditSelect;
+        onMemoDeleteProp = onDelete;
         return <div>MOCK</div>
     }
 
-    render(<MemoList list={_list} onEditSelect={_onEditSelect} onDelete={onDelete} _Memo={_Memo}/>)
+    render(<MemoList list={_list} onEditSelect={_onEditSelect}  onDelete={_onMemoDelete} _Memo={_Memo}/>)
     expect(memoProp).toBe(_list[0])
     expect(onEditSelectProp).toBe(_onEditSelect)
+    expect(onMemoDeleteProp).toBe(_onMemoDelete)
 })
 
 test('should split finished memos and pending memos into two lists', () => {
