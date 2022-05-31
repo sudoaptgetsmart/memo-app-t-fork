@@ -1,6 +1,6 @@
-import '/Memo.css';
 import {Button, Card} from "react-bootstrap";
 import {BsFillCheckCircleFill, BsFillCircleFill} from "react-icons/bs";
+import './Memo.css';
 
 export function Memo({memo, onEditSelect, onDelete}) {
     return <Card>
@@ -20,5 +20,6 @@ export function Memo({memo, onEditSelect, onDelete}) {
             <Button variant="outline-warning" onClick={() => onEditSelect(memo)}>Edit</Button>
             <Button variant="outline-danger" onClick={() => onDelete(memo)}>Delete</Button>
         </Card.Footer>
+
     </Card>
 }

@@ -3,13 +3,14 @@ import {v4 as uuidv4} from 'uuid';
 
 export function MemoInput(props) {
 
-    const emptyForm = {
+    const newMemo = {
         id: uuidv4(),
         title: '',
         desc: '',
         date: new Date(),
         finished: false
     }
+
     const {
         onSubmit,
         memo = newMemo
@@ -20,7 +21,7 @@ export function MemoInput(props) {
     function onFormSubmit(event) {
         event.preventDefault()
         onSubmit({...formState})
-        setFormState(emptyForm)
+        setFormState(newMemo);
     }
 
     function onTitleChange(event) {
@@ -54,7 +55,7 @@ export function MemoInput(props) {
     return <form onSubmit={onFormSubmit}>
         <input onChange={onTitleChange} value={formState.title} type={'text'} placeholder={"Title"}/>
         <input onChange={onDescChange} value={formState.desc} type={'text'} placeholder={"Description"}/>
-        <input onChange={onDateChange} value={formState.date.toISOString().substring(0,10)} type={'date'} placeholder={"Date"}/>
+        <input onChange={onDateChange} value={formState.date?.toISOString().substring(0,10)} type={'date'} placeholder={"Date"}/>
         <label>
             Finished:
             <input onChange={onFinishedChange} checked={formState.finished} type={'checkbox'}/>

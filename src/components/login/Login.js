@@ -25,7 +25,7 @@ export function Login({onSubmit}) {
     return <Card className={'w-50 text-center'}>
         <Form className={'p-3'} onSubmit={onFormSubmit}>
             <Form.Group className={'mb-3'}>
-                <Form.Label>Label</Form.Label>
+                <Form.Label>Login</Form.Label>
                 <Form.Control onChange={onUsernameChange} value={username} type={'text'} placeholder={"username"}/>
             </Form.Group>
 
