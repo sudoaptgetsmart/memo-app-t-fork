@@ -12,7 +12,7 @@ export function MemoInput(props) {
     }
     const {
         onSubmit,
-        memo = emptyForm
+        memo = newMemo
     } = props
 
     const [formState, setFormState] = useState(memo);
