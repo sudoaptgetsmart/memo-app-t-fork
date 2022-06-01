@@ -2,9 +2,9 @@ import {Button, Card} from "react-bootstrap";
 import {BsFillCheckCircleFill, BsFillCircleFill} from "react-icons/bs";
 import './Memo.css';
 import {useDispatch} from "react-redux";
-import {ON_MEMO_DELETE, ON_MEMO_SELECT} from "../modules/memos";
+import {ON_MEMO_DELETE, ON_MEMO_SELECT} from "../../modules/memos";
 
-export function Memo({memo, onEditSelect, onDelete}) {
+export function Memo({memo}) {
     const dispatch = useDispatch();
 
     return <Card>

@@ -1,6 +1,6 @@
 import {MemoInput} from "../memo-input/MemoInput";
 import {useDispatch} from "react-redux";
-import {ON_MEMO_ADD} from "../modules/memos";
+import {ON_MEMO_ADD} from "../../modules/memos";
 
 export function MemoAdd({_MemoInput = MemoInput}) {
     const dispatch = useDispatch()

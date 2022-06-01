@@ -37,6 +37,7 @@ export function reducer(state = initState, action) {
         case ON_MEMO_EDIT:
             return {
                 ...state,
+                selectedMemo: null,
                 memoList: state.memoList.map((memo) => {
                     if (action.memo.id === memo.id) {
                         return action.memo
