@@ -73,7 +73,7 @@ export function reducer(state = initState, action) {
 }
 
 // side effects - asynchronous actions
-function ininiateLogin(creds) {
+export function initiateLogin(creds) {
     return async function sideEffect(dispatch, getState) {
         dispatch({type: ON_LOGIN_REQUEST}) // notify the frontend code that we are
         // waiting to see if our creds were correct
