@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Button, Card, Form} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {initiateLogin} from "../../modules/memos";
+import {sanitizeHtml} from "bootstrap/js/src/util/sanitizer";
 
 export function Login() {
 
@@ -41,7 +42,7 @@ export function Login() {
                 Login
             </Button>
 
-            {loginFailed && <h2>Username and/or password are incorrect</h2>}
+            {loginFailed && <h2 color="red">Username and/or password are incorrect</h2>}
         </Form>
     </Card>
 }

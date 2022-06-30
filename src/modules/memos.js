@@ -11,7 +11,8 @@ const initState = {
     memoList: [],
     selectedMemo: null,
     loginPending: false,
-    loginFailed: false
+    loginFailed: false,
+    token: null,
 }
 
 export function reducer(state = initState, action) {
@@ -26,7 +27,8 @@ export function reducer(state = initState, action) {
                 ...state,
                 isLoggedIn: true,
                 loginPending: false,
-                loginFailed: false
+                loginFailed: false,
+                token: action.token
             }
 
         case ON_LOGIN_FAILED:
@@ -77,12 +79,16 @@ export function initiateLogin(creds) {
     return async function sideEffect(dispatch, getState) {
         dispatch({type: ON_LOGIN_REQUEST}) // notify the frontend code that we are
         // waiting to see if our creds were correct
-        const response = await fetch(
-            `http://localhost:8080/login?username=${creds.username}&password=${creds.password}`
-        )
-        if (response.ok)
-            dispatch({type: ON_LOGIN_PASSED})
-        else
+        try {
+            const response = await fetch(
+                `http://localhost:8080/login?username=${creds.username}&password=${creds.password}`
+            )
+            if (response.ok) {
+                const token = await response.json();
+                dispatch({type: ON_LOGIN_PASSED, token: token});
+            }
+        } catch (e) {
             dispatch({type: ON_LOGIN_FAILED})
+        }
     }
 }
