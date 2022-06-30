@@ -1,23 +1,21 @@
 import {useState} from "react";
 import {Button, Card, Form} from "react-bootstrap";
-import {useDispatch} from "react-redux";
-import {ON_LOGIN} from "../../modules/memos";
+import {useDispatch, useSelector} from "react-redux";
+import {initiateLogin} from "../../modules/memos";
 
 export function Login() {
 
     const dispatch = useDispatch();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const {loginPending, loginFailed} = useSelector(state => ({
+        loginPending: state.loginPending,
+        loginFailed: state.loginFailed
+    }))
 
     function onFormSubmit(event) {
         event.preventDefault();
-        dispatch({
-            type: ON_LOGIN,
-            creds: {
-                username: username,
-                password: password
-            }
-        })
+        dispatch(initiateLogin({username, password}))
     }
 
     function onUsernameChange(event) {
@@ -39,9 +37,11 @@ export function Login() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control onChange={onPasswordChange} value={password} type={'password'} placeholder={"password"}/>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" disabled={loginPending}>
                 Login
             </Button>
+
+            {loginFailed && <h2>Username and/or password are incorrect</h2>}
         </Form>
     </Card>
 }
