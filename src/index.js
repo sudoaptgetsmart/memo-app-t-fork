@@ -20,10 +20,9 @@ const asyncMiddleware = storeAPI => next => action => {
 
     next(action)
 }
-
-const store = createStore(reducer, compose(applyMiddleware(asyncMiddleware)));
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(asyncMiddleware)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
